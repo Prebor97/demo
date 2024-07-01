@@ -16,7 +16,7 @@ public class HelloController {
     private final String openWeatherApiKey = "a2542c927f797501a1d9fd16dc6430e2";
 
     @GetMapping("/api/hello")
-    public GreetingResponse sayHello(@RequestParam String name, HttpServletRequest request) {
+    public GreetingResponse sayHello(@RequestParam String visitor_name, HttpServletRequest request) {
         String clientIp = request.getRemoteAddr();
         if (clientIp.equals("0:0:0:0:0:0:0:1")) {
             clientIp = "105.113.97.131";
@@ -24,7 +24,7 @@ public class HelloController {
         String location = getLocationFromIp(clientIp);
         int temperature = getTemperatureForLocation(location);
         String greeting = String.format("Hello, %s! The temperature is %d degrees Celsius in %s" +
-                "", name, temperature, location);
+                "", visitor_name, temperature, location);
         return new GreetingResponse(clientIp, location, greeting);
     }
         private String getLocationFromIp(String ip){
