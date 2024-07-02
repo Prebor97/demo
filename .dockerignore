@@ -1,0 +1,7 @@
+target/*.jar
+**/.*.swp
+**/*~.swp
+**/node_modules
+**/target
+**/logs
+**/*.log
